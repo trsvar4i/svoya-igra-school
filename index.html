@@ -6,12 +6,23 @@
   <meta name="theme-color" content="#0d1017">
   <title>Своя игра · Школьный турнир</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="theme-studio.css">
   <script defer src="questions.js"></script>
-  <script defer src="game.js"></script>
+  <script defer src="session-files.js"></script>
+  <script defer src="js/core.js"></script>
+  <script defer src="js/fx.js"></script>
+  <script defer src="js/views.js"></script>
+  <script defer src="js/timer-audio.js"></script>
+  <script defer src="js/rules.js"></script>
+  <script defer src="js/dialogs.js"></script>
+  <script defer src="js/files.js"></script>
+  <script defer src="js/controls.js"></script>
 </head>
 <body>
   <div id="app"></div>
   <dialog id="modal" aria-labelledby="modal-title"></dialog>
+  <input id="open-json" type="file" accept=".json,application/json" hidden>
   <div id="print-sheet"></div>
   <noscript>Включите JavaScript, чтобы запустить турнир.</noscript>
 </body>

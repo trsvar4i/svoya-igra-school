@@ -91,15 +91,48 @@ const roundTwo = [
 ];
 
 const pointValues = [200, 400, 600, 800, 1000];
-const questions = {
-  round1: roundOne.map(([id, title, entries]) => ({
-    id, title, questions: entries.map(([question, answer, note, isCatInBag = false], index) => ({
-      points: pointValues[index], question, answer, note, isCatInBag,
+
+// Собирает набор вопросов из коротких строк: [вопрос, ответ, пояснение, «кот в мешке»].
+function makeBank(name, roundOne, roundTwo) {
+  return {
+    format: 'svoya-igra-questions', version: 1, name,
+    round1: roundOne.map(([id, title, entries]) => ({
+      id, title, questions: entries.map(([question, answer, note, isCatInBag = false], index) => ({
+        points: pointValues[index], question, answer, note, isCatInBag,
+      })),
     })),
-  })),
-  round2: roundTwo.map(([id, title, entries]) => ({
-    id, title, questions: entries.map(([question, answer, note], index) => ({
-      order: index + 1, question, answer, note,
+    round2: roundTwo.map(([id, title, entries]) => ({
+      id, title, questions: entries.map(([question, answer, note], index) => ({
+        order: index + 1, question, answer, note,
+      })),
     })),
-  })),
-};
+  };
+}
+
+const demoBank = makeBank('Демонстрационный набор · 9 класс', roundOne, roundTwo);
+
+// Наборы по классам. Класс 9 встроен, остальные лежат в banks/grade-N.js и подгружаются при выборе.
+const gradeNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const gradeFiles = Object.fromEntries([1, 2, 3, 4, 5, 6, 7, 8, 10, 11].map(grade => [grade, `banks/grade-${grade}.js`]));
+const gradeBanks = { 9: demoBank };
+
+function registerBank(grade, bank) {
+  gradeBanks[grade] = bank;
+}
+
+function hasGradeBank(grade) {
+  return Object.hasOwn(gradeBanks, grade) || Object.hasOwn(gradeFiles, grade);
+}
+
+// Подгружает файл набора для класса. Возвращает набор или null, если его нет.
+function loadGradeBank(grade) {
+  if (gradeBanks[grade]) return Promise.resolve(gradeBanks[grade]);
+  if (!gradeFiles[grade]) return Promise.resolve(null);
+  return new Promise(resolve => {
+    const script = document.createElement('script');
+    script.src = gradeFiles[grade];
+    script.onload = () => resolve(gradeBanks[grade] || null);
+    script.onerror = () => resolve(null);
+    document.head.append(script);
+  });
+}

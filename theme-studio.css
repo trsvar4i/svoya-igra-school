@@ -1,0 +1,158 @@
+/* Оформление «Постер»: тёмная графитовая бумага, плоские цветные плитки и жёсткие тени.
+   Один шрифт (Unbounded) на всём экране. Включается атрибутом data-theme="studio" на <html>.
+   Кнопка «Дизайн» в шапке возвращает «Неон». */
+@media screen {
+  [data-theme=studio] {
+    color-scheme: dark;
+    --line: #07060a;        /* жёсткие тени */
+    --edge: #5c5675;        /* контуры карточек */
+    --on-bright: #15120f;   /* текст на жёлтом и красном */
+    --yellow: #ffd23f;
+    --tomato: #ff5a3c;
+    --cobalt: #3a4bd1;
+    --bg: #1a1722;
+    --panel: #262232;
+    --raised: #332e43;
+    --text: #f5efe0;
+    --muted: #b6aec4;
+    --stroke: var(--edge);
+    --lime: var(--tomato);
+    --cyan: var(--yellow);
+    --green: #46e08e;
+    --red: #ff7060;
+    --amber: #ffb02e;
+    --shadow: 5px 5px 0 var(--line);
+    --dlg-shadow: 12px 12px 0 var(--line);
+    --display: Unbounded, "Arial Black", "Segoe UI", sans-serif;
+    --body: Unbounded, "Arial Black", "Segoe UI", sans-serif;
+    --mono: Unbounded, "Arial Black", "Segoe UI", sans-serif;
+  }
+
+  [data-theme=studio] body { background: var(--bg) radial-gradient(#ffffff12 1.2px, transparent 1.4px) 0 0 / 22px 22px; font-size: 14px; font-weight: 500; line-height: 1.55; }
+  [data-theme=studio] button, [data-theme=studio] input, [data-theme=studio] select { font-family: var(--body); }
+  [data-theme=studio] strong, [data-theme=studio] th { font-weight: 700; }
+  [data-theme=studio] button:focus-visible, [data-theme=studio] input:focus-visible, [data-theme=studio] select:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+  /* шапка */
+  [data-theme=studio] .topbar { border-bottom: 3px solid var(--edge); }
+  [data-theme=studio] .brand { font-weight: 800; letter-spacing: -.03em; }
+  [data-theme=studio] .brand-mark { background: var(--yellow); color: var(--on-bright); border: 2px solid var(--line); box-shadow: 3px 3px 0 var(--line); transform: rotate(-7deg); }
+  [data-theme=studio] .offline { color: var(--muted); font-size: .72rem; }
+  [data-theme=studio] .eyebrow { color: var(--on-bright); background: var(--yellow); display: inline-block; padding: 3px 9px; border: 2px solid var(--line); font-size: .64rem; font-weight: 700; letter-spacing: .05em; transform: rotate(-1.2deg); }
+  [data-theme=studio] .muted { color: var(--muted); }
+  [data-theme=studio] .small { font-size: .74rem; }
+
+  /* главный экран */
+  [data-theme=studio] .hero { background: var(--panel); border: 3px solid var(--edge); border-radius: 14px; box-shadow: 9px 9px 0 var(--line); }
+  [data-theme=studio] .hero::before { background: repeating-linear-gradient(-45deg, #ffffff0b 0 2px, transparent 2px 14px); }
+  [data-theme=studio] .hero h1 { color: var(--text); letter-spacing: -.06em; font-weight: 800; }
+  [data-theme=studio] .hero h1 span { color: var(--on-bright); background: var(--yellow); padding: 0 .16em .04em; border: 3px solid var(--line); border-radius: 8px; box-shadow: 6px 6px 0 var(--line); }
+  [data-theme=studio] .hero p { color: var(--muted); font-size: clamp(.8rem, 1.4vw, .98rem); }
+  [data-theme=studio] .hero-emblem { color: var(--yellow); opacity: .5; }
+  [data-theme=studio] .hero-emblem path:last-child { fill: var(--tomato); fill-opacity: 1; stroke: var(--line); }
+
+  /* карточки и поля */
+  [data-theme=studio] .panel { background: var(--panel); border: 3px solid var(--edge); border-radius: 12px; box-shadow: var(--shadow); }
+  [data-theme=studio] .panel-heading h2 { font-weight: 800; }
+  [data-theme=studio] .count { color: var(--on-bright); background: var(--yellow); border: 2px solid var(--line); border-radius: 999px; font-size: .66rem; font-weight: 700; }
+  [data-theme=studio] .team-row { background: var(--raised); border: 2px solid var(--edge); border-radius: 9px; }
+  [data-theme=studio] .team-number { color: var(--yellow); font-weight: 700; }
+  [data-theme=studio] .team-row input[type=text] { background: transparent; border-color: transparent; }
+  [data-theme=studio] .team-row input[type=color]::-webkit-color-swatch { border: 2px solid var(--line); border-radius: 50%; }
+  [data-theme=studio] .team-row input[type=color] { width: 28px; height: 28px; }
+  [data-theme=studio] .setting { border-bottom: 2px dashed #ffffff26; }
+  [data-theme=studio] .setting small { font-size: .68rem; }
+  [data-theme=studio] input, [data-theme=studio] select { color: var(--text); background: var(--raised); border: 2px solid var(--edge); border-radius: 8px; }
+  [data-theme=studio] input[type=checkbox] { accent-color: var(--yellow); }
+
+  /* кнопки */
+  [data-theme=studio] .btn { color: var(--text); background: var(--raised); border: 2px solid var(--edge); border-radius: 10px; box-shadow: 3px 3px 0 var(--line); font-weight: 700; font-size: .8rem; }
+  [data-theme=studio] .btn:hover:not(:disabled) { color: var(--on-bright); background: var(--yellow); border-color: var(--line); transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--line); }
+  [data-theme=studio] .btn:active:not(:disabled) { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--line); }
+  [data-theme=studio] .btn:disabled { opacity: .4; box-shadow: none; }
+  [data-theme=studio] .btn-ghost { background: transparent; box-shadow: none; }
+  [data-theme=studio] .btn-ghost:hover:not(:disabled) { box-shadow: 3px 3px 0 var(--line); }
+  [data-theme=studio] .btn-primary { background: var(--tomato); color: var(--on-bright); border-color: var(--line); }
+  [data-theme=studio] .btn-primary:hover:not(:disabled) { background: #ff7a5f; border-color: var(--line); }
+  [data-theme=studio] .btn-good { color: #0b3b22; background: var(--green); border-color: var(--line); }
+  [data-theme=studio] .btn-bad { color: #3d0d06; background: var(--red); border-color: var(--line); }
+  [data-theme=studio] .btn-good:hover:not(:disabled) { background: #74efae; color: #0b3b22; }
+  [data-theme=studio] .btn-bad:hover:not(:disabled) { background: #ff9183; color: #3d0d06; }
+  [data-theme=studio] .icon-button.btn { box-shadow: 2px 2px 0 var(--line); }
+
+  /* заголовки экранов, правила */
+  [data-theme=studio] .titlebar h1 { font-weight: 800; letter-spacing: -.045em; }
+  [data-theme=studio] .rule svg { color: var(--on-bright); background: var(--yellow); border: 2px solid var(--line); border-radius: 50%; padding: 6px; width: 2.4em; height: 2.4em; box-sizing: border-box; }
+  [data-theme=studio] .rule h2 { font-size: 1rem; }
+  [data-theme=studio] .rule:nth-child(even) { transform: rotate(.35deg); }
+  [data-theme=studio] .rule:nth-child(odd) { transform: rotate(-.35deg); }
+
+  /* игровое табло */
+  [data-theme=studio] .board-label { color: var(--yellow); background: var(--line); border: 3px solid var(--line); border-radius: 10px; font-weight: 800; }
+  [data-theme=studio] .board-cell { color: var(--yellow); background: var(--cobalt); border: 3px solid var(--line); border-radius: 10px; box-shadow: 4px 4px 0 var(--line); font-weight: 800; text-shadow: 2px 2px 0 var(--line); }
+  [data-theme=studio] .board-cell:hover:not(:disabled) { color: var(--on-bright); background: var(--tomato); border-color: var(--line); box-shadow: 7px 7px 0 var(--line); text-shadow: none; transform: translate(-3px, -3px) rotate(-1deg); }
+  [data-theme=studio] .board-cell:active:not(:disabled) { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--line); }
+  [data-theme=studio] .board-cell:disabled { color: #ffffff30; background: transparent; border: 2px dashed #ffffff30; box-shadow: none; text-shadow: none; }
+
+  /* счёт команд */
+  [data-theme=studio] .score-card { color: var(--text); background: var(--panel); border: 2px solid var(--edge); border-top: 10px solid var(--team); border-radius: 10px; box-shadow: 3px 3px 0 var(--line); }
+  [data-theme=studio] .score-card:hover { background: var(--raised); }
+  [data-theme=studio] .score-card.current { background: #3a3320; border-color: var(--yellow); border-top-color: var(--team); box-shadow: 5px 5px 0 var(--line); }
+  [data-theme=studio] .score-card .name { color: var(--muted); font-weight: 700; font-size: .78rem; }
+  [data-theme=studio] .score-card.current .name { color: var(--yellow); }
+  [data-theme=studio] .score { font-weight: 800; }
+  [data-theme=studio] .score.negative { color: var(--red); }
+
+  /* выбор тем и ставки */
+  [data-theme=studio] .topic { font-weight: 700; }
+  [data-theme=studio] .topic.selected { color: var(--on-bright); background: var(--yellow); border-color: var(--line); box-shadow: 5px 5px 0 var(--line); transform: translate(-2px, -2px) rotate(-.8deg); }
+  [data-theme=studio] .topic-tag { color: var(--on-bright); background: var(--yellow); border-radius: 50%; width: 1.7em; height: 1.7em; display: inline-grid; place-items: center; flex: none; font-size: .8rem; }
+  [data-theme=studio] .topic.selected .topic-tag { color: var(--yellow); background: var(--line); }
+  [data-theme=studio] .stake-card { border-top: 10px solid var(--team); }
+
+  /* окна */
+  [data-theme=studio] dialog { color: var(--text); background: var(--panel); border: 4px solid var(--edge); border-radius: 16px; box-shadow: var(--dlg-shadow); }
+  [data-theme=studio] dialog::backdrop { background: #07060acc radial-gradient(#ffd23f26 1.5px, transparent 1.6px) 0 0 / 26px 26px; }
+  [data-theme=studio] .question-value { color: var(--tomato); }
+  [data-theme=studio] .dialog-heading h2 { font-weight: 800; }
+  [data-theme=studio] .timer-track { background: var(--line); height: 12px; border-bottom: 3px solid var(--edge); }
+  [data-theme=studio] .timer-track > div { background: var(--cobalt); }
+  [data-theme=studio] .timer-track.danger > div { background: var(--tomato); }
+  [data-theme=studio] .timer-panel { border-block: 3px solid var(--edge); }
+  [data-theme=studio] .timer { min-width: 4.4ch; text-align: center; color: var(--on-bright); font-weight: 800; background: var(--yellow); border: 3px solid var(--line); border-radius: 10px; padding: 4px 12px; box-shadow: 3px 3px 0 var(--line); font-size: clamp(1.2rem, 2.6vw, 2rem); }
+  [data-theme=studio] .timer.danger { color: var(--text); background: var(--tomato); }
+  [data-theme=studio] .timer-status { color: var(--red); }
+  [data-theme=studio] .question-text { font-weight: 700; letter-spacing: -.025em; font-size: clamp(1.15rem, 2.6vw, 2.1rem); line-height: 1.35; }
+  [data-theme=studio] .answer { background: #123b27; border: 3px solid var(--line); border-left: 12px solid var(--green); border-radius: 10px; box-shadow: 4px 4px 0 var(--line); }
+  [data-theme=studio] .answer .eyebrow { display: block; width: fit-content; margin-bottom: 8px; }
+  [data-theme=studio] .answer strong { font-size: clamp(1rem, 1.8vw, 1.45rem); }
+  [data-theme=studio] .judge-group { background: var(--raised); border: 2px solid var(--edge); border-radius: 10px; }
+  [data-theme=studio] .judge-active { background: #3a3320; box-shadow: 4px 4px 0 var(--line); border-left: 12px solid var(--team); font-size: clamp(1rem, 2vw, 1.35rem); }
+  [data-theme=studio] .judge-final { border-left: 8px solid var(--team); }
+  [data-theme=studio] .judge-hint { color: var(--yellow); font-weight: 700; }
+  [data-theme=studio] .cat-title { color: var(--on-bright); background: var(--yellow); border: 3px solid var(--line); border-radius: 12px; padding: 0 .35em; box-shadow: 4px 4px 0 var(--line); display: inline-block; transform: rotate(-1.5deg); }
+  [data-theme=studio] .judge-feedback strong { font-weight: 800; }
+  [data-theme=studio] .judge-feedback strong.btn-good { color: var(--green); background: transparent; }
+  [data-theme=studio] .judge-feedback strong.btn-bad { color: var(--red); background: transparent; }
+  [data-theme=studio] .judge-group .status.btn-good { color: #0b3b22; background: var(--green); padding: 1px 6px; border-radius: 6px; }
+  [data-theme=studio] .judge-group .status.btn-bad { color: #3d0d06; background: var(--red); padding: 1px 6px; border-radius: 6px; }
+
+  /* таблицы и итоги */
+  [data-theme=studio] th { color: var(--yellow); border-bottom: 3px solid var(--edge); }
+  [data-theme=studio] th, [data-theme=studio] td { border-bottom-color: #ffffff22; }
+  [data-theme=studio] .podium-card { border: 3px solid var(--edge); border-top: 14px solid var(--team); }
+  [data-theme=studio] .podium-card:first-child { background: #3a3320; border-color: var(--yellow); border-top-color: var(--team); box-shadow: 8px 8px 0 var(--line); }
+  [data-theme=studio] .podium-card:first-child .score { color: var(--yellow); }
+  [data-theme=studio] .podium-card .eyebrow { transform: none; }
+  [data-theme=studio] .warning { color: var(--amber); font-weight: 700; }
+
+  /* уведомление о финале */
+  [data-theme=studio] .hl { color: var(--on-bright); background: var(--yellow); border: 3px solid var(--line); border-radius: 8px; padding: 0 .15em .04em; box-shadow: 5px 5px 0 var(--line); display: inline-block; transform: rotate(-1.5deg); }
+  [data-theme=studio] .fact { background: var(--raised); border: 2px solid var(--edge); box-shadow: 4px 4px 0 var(--line); }
+  [data-theme=studio] .fact b { color: var(--yellow); }
+  [data-theme=studio] .fact.good b { color: var(--green); }
+  [data-theme=studio] .fact.bad b { color: var(--red); }
+  [data-theme=studio] .final-intro .hl { animation: none; }
+  [data-theme=studio] .early-note { border-left: 12px solid var(--amber); }
+  [data-theme=studio] .early-winner strong { color: var(--yellow); }
+}
